@@ -1,0 +1,42 @@
+__pycache__/
+*.py[cod]
+
+env/
+bin/
+include/
+lib/
+lib64
+share/
+pyvenv.cfg
+
+
+*/secret.txt
+*/.idea
+*/node_modules
+*/__pycache__
+*/db.sqlite3
+
+#frontend 
+.DS_Store
+node_modules
+/dist
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
