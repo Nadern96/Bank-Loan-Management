@@ -28,6 +28,8 @@ Before getting started you should have the following installed and running:
 ## Libraries
 
 * amortization (python library to generate the amortization table)
+* jsPDF (generate pdf file)
+* axios
 
 ## Setup Template
 
