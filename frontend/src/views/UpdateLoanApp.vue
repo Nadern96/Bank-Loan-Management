@@ -5,7 +5,7 @@
         <v-flex xs12 md10>
           <v-card>
             <v-card-title>
-              <h2 class="blue-grey--text text-center">Loan Fund Application</h2>
+              <h2 class="blue-grey--text text-center">Loan Application</h2>
             </v-card-title>
             <v-card-text>
               <v-form

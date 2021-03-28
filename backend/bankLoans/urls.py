@@ -8,7 +8,6 @@ urlpatterns = [
     path('api/register/', views.Registration.as_view(), name='register'),
     path('api/login/', views.CustomObtainAuthToken.as_view(), name='login'),
 
-
     path('api/loanfunds/', views.LoanFundList.as_view(), name='loanfund-list'),
     path('api/loanfunds/<int:pk>/', views.LoanFundDetail.as_view(), name='loanfund-detail'),
     path('api/loans/', views.LoanList.as_view(), name='loan-list'),

@@ -18,8 +18,8 @@
             </v-app-bar>
       
              <v-navigation-drawer   absolute temporary class="primary" v-model="drawer">
-                <v-list class="justify-center">
-                    <v-list-item  v-for="link in links" :key="link.text" router :to="link.route">
+                <v-list  class="px-0 align-center justify-center fill-height">
+                    <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
                         <v-list-item-action>
                             <v-icon class="white--text">{{link.icon}}</v-icon>
                         </v-list-item-action>
@@ -126,7 +126,7 @@ export default {
         }
          else {
             if(this.links.length > 2)
-                this.links.splice(1,2);
+                this.links.splice(1);
             else 
                 this.links.splice(1,1);
         }

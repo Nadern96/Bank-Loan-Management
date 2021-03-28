@@ -7,7 +7,7 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.reverse import reverse
 from rest_framework import generics
 from rest_framework import permissions
@@ -20,12 +20,13 @@ from rest_framework.authtoken.views import ObtainAuthToken
 # Create your views here.
 
 @api_view(['GET'])
+@permission_classes([])
 def api_root(request, format=None):
     return Response({
         'loanfunds': reverse('loanfund-list', request=request, format=format),
-        'loan': reverse('loan-list', request=request, format=format),
+        'loans': reverse('loan-list', request=request, format=format),
         'loanfundapps': reverse('loanfundapp-list', request=request, format=format),
-        
+        'loanapps': reverse('loanapp-list', request=request, format=format),        
     })
 
 # Loan Fund
