@@ -4,11 +4,9 @@ Django + Vuetify application to manage bank loans.
 ## Django + Vuetify
 
 
-### Video Demo
-
 ### Docs
 
-* [Project description](https://drive.google.com/file/d/1LivaDaP2BsmJnSjdDr0i-SDDe_7rsW4k/view?usp=sharing)
+* [Project description](https://drive.google.com/file/d/1JEAKSkCglm4wX2_q1uiRjT-RqZrz5NTQ/view?usp=sharing)
 * [Database ERD](https://drive.google.com/file/d/1LivaDaP2BsmJnSjdDr0i-SDDe_7rsW4k/view?usp=sharing)
 
 ### Includes
@@ -46,6 +44,8 @@ Setup Django app
 
 ```
 $ cd backend/
+$ virtualenv env
+$ source env/bin/activate
 $ pip install -r requirements.txt 
 $ python manage.py migrate
 ```
@@ -61,3 +61,4 @@ Inside frontend directory
 ```
 $ npm run serve
 ```
+
