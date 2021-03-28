@@ -24,9 +24,10 @@ Before getting started you should have the following installed and running:
 - [X] Python
 - [X] pip    -    $ sudo apt-get install python3-pip
 
-### Libraries
+## Libraries
 
 * amortization (python library to generate the amortization table)
+
 ## Setup Template
 
 ```
