@@ -23,7 +23,7 @@ Loan_Fund_Types = [
 MAX_DURATION = 20             # 20 year
 MIN_DURATION = 1              # 1 years
 MAX_INTEREST_RATE = 30        # 30%
-MIN_INTEREST_RATE = 5         # 5%
+MIN_INTEREST_RATE = 1         # 1%
 
 MIN_LOAN_AMOUNT = 1000
 MAX_LOAN_AMOUNT = 1000000
