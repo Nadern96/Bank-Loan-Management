@@ -69,6 +69,10 @@ const routes = [
     path: "/loanapps/:id",
     name: "UpdateLoanApp",
     component: UpdateLoanApp
+  },
+  {
+    path :'*',
+    component: Home
   }
 ];
 

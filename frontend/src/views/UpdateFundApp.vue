@@ -1,5 +1,5 @@
 <template>
-  <div class="register">
+  <div>
     <v-container >
       <v-layout row mt-10 justify-center>
         <v-flex xs12 md10>
@@ -74,7 +74,11 @@
                 <v-btn :disabled="!tableshown" @click="displayAmortizationTable" class='primary'>Show Amortization Table</v-btn>
                 <p class="mt-5 red--text font-weight-bold">{{amortizationResp}}</p>
 
-                <data-table :data="amorTable" :headers="amorheaders" :goToLink="/login/"></data-table>
+                <data-table :data="amorTable" 
+                            :headers="amorheaders" 
+                            :goToLink="/login/"  
+                            :tableName="'Fund Application Amortization'">
+                </data-table>
 
             </div>
 

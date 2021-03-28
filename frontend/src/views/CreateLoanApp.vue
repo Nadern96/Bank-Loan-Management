@@ -1,5 +1,5 @@
 <template>
-  <div class="register">
+  <div>
     <v-container >
       <v-layout row mt-10 justify-center>
         <v-flex xs12 md6>

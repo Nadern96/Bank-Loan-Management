@@ -1,10 +1,14 @@
 <template>
-  <div class="home">
+  <div>
     <v-container >
       <v-layout row mt-10 justify-center>
         <v-flex xs12 md10>
               <h1 class="blue-grey--text">Loan Fund Applications</h1>
-              <data-table :data="loanfunds" :headers="fundheaders" :goToLink="/loanfundapps/"></data-table>
+              <data-table :data="loanfunds" 
+                          :headers="fundheaders" 
+                          :goToLink="/loanfundapps/" 
+                          :tableName="'Loan Fund Applications'">
+              </data-table>
         </v-flex>
       </v-layout>
     </v-container>
@@ -22,6 +26,9 @@ export default {
     DataTable
   },
   created() {
+    if(!localStorage.getItem('user-token')){
+        this.$router.push('/login');
+    }
     this.getLoanFundApps();
   },
   data: () => ({
@@ -38,18 +45,32 @@ export default {
             headers: {"Authorization" : `Token ${localStorage.getItem('user-token')}`},      
         })
         .then(resp => {
-          this.loanfunds = resp.data;
           this.fundheaders = [
             { text: 'ID', value: 'id' },
-            { text: 'Provider', value: 'provider.username' },
-            { text: 'Loan type', value: 'loan_fund.fund_type' },
-            { text: 'Duration(Yrs)', value: 'loan_fund.duration' },
-            { text: 'Interest Rate(%)', value: 'loan_fund.interest_rate' },
+            { text: 'Provider', value: 'provider' },
+            { text: 'Loan type', value: 'fund_type' },
+            { text: 'Duration(Yrs)', value: 'duration' },
+            { text: 'Interest Rate(%)', value: 'interest_rate' },
             { text: 'Amount($)', value: 'amount' },
             { text: 'Status', value: 'status' },
             // { text: 'Delete', value: 'delete'},   
           ]
           // allow delete functionality on loan fund apps only for Bank Per
+          
+          for(let i=0; i < resp.data.length; i++){
+              let obj = resp.data[i];
+              let temp = {
+                id:obj.id, 
+                provider: obj.provider.username, 
+                fund_type: obj.loan_fund.fund_type, 
+                duration: obj.loan_fund.duration,
+                interest_rate: obj.loan_fund.interest_rate, 
+                amount: obj.amount, 
+                status: obj.status,
+              };
+              this.loanfunds.push(temp);
+            }
+
           if(localStorage.getItem('user-type') === "Bank Per")
               this.fundheaders.push({ text: 'Delete', value: 'delete'});
 

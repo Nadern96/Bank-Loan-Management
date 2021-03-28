@@ -6,18 +6,19 @@
                     <span class="font-weight-light">Bank</span>
                     <span class="primary--text">Loan</span>
                 </v-toolbar-title>
+
+
+                
                 <v-spacer></v-spacer>
-                <v-btn plain color="grey" @click="logout">    
+                <v-btn plain color="primary text--lighten" @click="logout">    
                     <span>{{this.navLink}}</span>
                     <v-icon right>exit_to_app</v-icon>
                 </v-btn>
                    
             </v-app-bar>
       
-             <v-navigation-drawer   absolute
-      
-      temporary class="primary" v-model="drawer">
-                <v-list>
+             <v-navigation-drawer   absolute temporary class="primary" v-model="drawer">
+                <v-list class="justify-center">
                     <v-list-item  v-for="link in links" :key="link.text" router :to="link.route">
                         <v-list-item-action>
                             <v-icon class="white--text">{{link.icon}}</v-icon>
@@ -122,12 +123,12 @@ export default {
                 this.links.push({id:7, icon: 'money', text: 'Create Fund App', route: '/createfundapp' });
                 this.links.push({id:8, icon: 'folder', text: 'My Apps', route: '/fundapps' });
             }
-            else {
-                 if(this.links.length > 2)
-                    this.links.splice(1,2);
-                else 
-                    this.links.splice(1,1);
-            }
+        }
+         else {
+            if(this.links.length > 2)
+                this.links.splice(1,2);
+            else 
+                this.links.splice(1,1);
         }
       }
   },

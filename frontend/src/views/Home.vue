@@ -1,12 +1,20 @@
 <template>
-  <div class="home">
+  <div>
     <v-container >
-      <v-layout row justify-center>
+      <v-layout row mt-10 justify-center>
         <v-flex xs12 md10>
               <h1 class="blue-grey--text">Loans</h1>
-              <data-table :data="loans" :headers="loanheaders" :goToLink="/loans/"></data-table>
+              <data-table :data="loans" 
+                          :headers="loanheaders" 
+                          :goToLink="/loans/" 
+                          :tableName="'Loans'" >
+              </data-table>
               <h1 class="blue-grey--text">Loan Funds</h1>
-              <data-table :data="loanfunds" :headers="fundheaders" :goToLink="/loanfunds/"></data-table>
+              <data-table :data="loanfunds" 
+                          :headers="fundheaders" 
+                          :goToLink="/loanfunds/" 
+                          :tableName="'Loan Funds'">
+              </data-table>
         </v-flex>
       </v-layout>
     </v-container>
@@ -41,10 +49,9 @@ export default {
     getLoans() {
         axios.get('api/loans/')
           .then(resp => {
-            // console.log(resp.data);
             this.loanheaders = [
               { text: 'ID', value: 'id' },
-              { text: 'Loan type', value: 'loan_fund.fund_type' },
+              { text: 'Loan type', value: 'fund_type' },
               { text: 'Duration(Yrs)', value: 'duration' },
               { text: 'Interest Rate(%)', value: 'interest_rate' },
               { text: 'Min Amount($)', value: 'min_amount' },
@@ -55,8 +62,20 @@ export default {
             if(localStorage.getItem('user-type') === "Bank Per")
               this.loanheaders.push({ text: 'Delete', value: 'delete'});
 
-            this.loans = resp.data;
-            console.log(this.loans);
+            // unpack data into loans to be easily displayed using data-table
+            // this.loans = resp.data;
+            for(let i=0; i < resp.data.length; i++){
+              let obj = resp.data[i];
+              let temp = {
+                id:obj.id, 
+                fund_type: obj.loan_fund.fund_type, 
+                duration: obj.duration, 
+                interest_rate: obj.interest_rate, 
+                min_amount: obj.min_amount, 
+                max_amount: obj.max_amount
+              };
+              this.loans.push(temp);
+            }
           })
           .catch(err => {
             console.log(err);
@@ -65,8 +84,6 @@ export default {
     getLoanFunds() {
       axios.get('api/loanfunds/')
         .then(resp => {
-          console.log(resp.data);
-          this.loanfunds = resp.data;
           this.fundheaders = [
             { text: 'ID', value: 'id' },
             { text: 'Loan type', value: 'fund_type' },
@@ -81,6 +98,19 @@ export default {
             if(localStorage.getItem('user-type') === "Bank Per")
               this.fundheaders.push({ text: 'Delete', value: 'delete'});
 
+            for(let i=0; i < resp.data.length; i++){
+              let obj = resp.data[i];
+              let temp = {
+                id:obj.id, 
+                fund_type: obj.fund_type, 
+                duration: obj.duration, 
+                interest_rate: obj.interest_rate, 
+                min_amount: obj.min_amount, 
+                max_amount: obj.max_amount,
+                current_amount: obj.current_amount
+              };
+              this.loanfunds.push(temp);
+            }
         })
         .catch(err => {
           console.log(err);

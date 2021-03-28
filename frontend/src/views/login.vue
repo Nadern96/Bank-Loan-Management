@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div>
     
     <v-container >
       <v-layout row mt-10 justify-center>
