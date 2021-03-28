@@ -1,7 +1,7 @@
 <template>
     <div class="mt-5 data-table">
         
-        <v-btn v-if="saveBtn" @click="createPDF" class='primary'>
+        <v-btn v-if="saveBtn" :disabled="!this.data.length" @click="createPDF" class='primary'>
             <span>Save as PDF</span>
             <v-icon right>download</v-icon>
         </v-btn>
@@ -105,7 +105,7 @@ export default {
                 properties.push(temp[1]);
             }
         }); 
-        console.log(properties);
+        // console.log(properties);
 
         dataSource.forEach(element => {
             let temp = [];

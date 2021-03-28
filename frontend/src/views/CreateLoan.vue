@@ -118,7 +118,7 @@ export default {
       interest: 1,
       interestRules: [
         v => !!v || 'This field is required',
-        v => (v &&  v <= 30) || 'Must be less than 30',
+        v => (v && v >= 1 &&  v <= 30) || 'Must be less than 30',
       ],
       select: [],
 
